@@ -33,7 +33,7 @@ export function SocketProvider({ children }) {
   }, []);
 
   useEffect(() => {
-    const socketInstance = io(process.env.NEXT_PUBLIC_SOCKET_URL || 'http://localhost:8080', {
+    const socketInstance = io('http://localhost:3001', {
       transports: ['websocket', 'polling'],
       reconnection: true,
       reconnectionAttempts: 10,
