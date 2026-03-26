@@ -4,7 +4,7 @@ const { Server } = require('socket.io');
 const cors = require('cors');
 const { GameState, GRID_SIZE, COOLDOWN_MS } = require('./gameState');
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 8080;
 
 const app = express();
 app.use(cors());
@@ -13,8 +13,9 @@ app.use(express.json());
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: ['http://localhost:3000', 'http://127.0.0.1:3000'],
+    origin: "*",
     methods: ['GET', 'POST'],
+    credentials: true
   },
   pingInterval: 10000,
   pingTimeout: 5000,
